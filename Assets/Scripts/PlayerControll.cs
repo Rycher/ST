@@ -20,8 +20,7 @@ public class PlayerControll : MonoBehaviour
     private bool noChao;
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {        
         _speed = 5.0f;
         _jumpForce = 320.0f;
         noChao = true;
