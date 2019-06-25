@@ -39,7 +39,7 @@ public class PlayerControll : MonoBehaviour
         swhitbox.GetComponent<CircleCollider2D>().enabled = true;        
     }
        
-
+    //Testando Git PUSH
     void Controlers()
     {
         GameObject swhitbox = GameObject.Find("SwHitbox");
