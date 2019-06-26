@@ -18,6 +18,7 @@ public class PlayerControll : MonoBehaviour
     bool DJump;
     bool Attack;
     private bool noChao;
+    int At;
     // Start is called before the first frame update
     void Start()
     {        
@@ -32,7 +33,7 @@ public class PlayerControll : MonoBehaviour
         Controlers();      
     }
     
-    //Pull TESTE2
+    
     
     //Function called from third frame at attack animation
     void HitBox()
@@ -53,9 +54,9 @@ public class PlayerControll : MonoBehaviour
         float translationX = Input.GetAxis("Horizontal") * _speed * Time.deltaTime;
 
         //if it's attacking then stop move
-        if (Player.GetComponent<Animator>().GetBool("Attack") != true)        
+        if (Player.GetComponent<Animator>().GetBool("Attack") == false)        
         {
-            transform.Translate(translationX, translationY, 0);            
+            transform.Translate(translationX, translationY, 0);         
         }
         else
         {
@@ -65,7 +66,7 @@ public class PlayerControll : MonoBehaviour
         //if it's on movement
         if (translationX != 0)
         {
-            Player.GetComponent<Animator>().SetTrigger("Walking");            
+            Player.GetComponent<Animator>().SetTrigger("Walking");          
             Player.GetComponent<Animator>().SetBool("Idle", false);
 
             if (Input.GetAxis("Horizontal") < 0)
@@ -111,10 +112,16 @@ public class PlayerControll : MonoBehaviour
         
         //Hit Enemy
         if (swhitbox.GetComponent<CircleCollider2D>().IsTouching(GameObject.Find("RedEye").GetComponent<CircleCollider2D>()))
-        {
-            Debug.Log("Acertou o inimigo!");
+        {            
+            if (At != 1)
+            {
+                Debug.Log("Acertou o inimigo!");               
+            }             
         }
-
+        else
+        {
+            At = 1;
+        }
         //Attack
         if (Input.GetButton("Fire1"))
         {           
@@ -125,10 +132,7 @@ public class PlayerControll : MonoBehaviour
             Attack = false;
             //GameObject swhitbox = GameObject.Find("SwHitbox");
             swhitbox.GetComponent<CircleCollider2D>().enabled = false;
-            Player.GetComponent<Animator>().SetBool("Attack", false);            
+            Player.GetComponent<Animator>().SetBool("Attack", false);
         }
-
     }
-
-
 }
