@@ -32,7 +32,7 @@ public class PlayerControll : MonoBehaviour
         Controlers();      
     }
     
-    //Pull TESTE
+    //Pull TESTE2
     
     //Function called from third frame at attack animation
     void HitBox()
