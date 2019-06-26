@@ -31,7 +31,9 @@ public class PlayerControll : MonoBehaviour
     {        
         Controlers();      
     }
-
+    
+    //Pull TESTE
+    
     //Function called from third frame at attack animation
     void HitBox()
     {
