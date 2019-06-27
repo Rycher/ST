@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 186149108}
   - component: {fileID: 186149107}
   - component: {fileID: 186149110}
+  - component: {fileID: 186149111}
   m_Layer: 0
   m_Name: RedEye
   m_TagString: Untagged
@@ -230,6 +231,25 @@ CircleCollider2D:
   m_Offset: {x: -0.05, y: 0}
   serializedVersion: 2
   m_Radius: 0.53131795
+--- !u!95 &186149111
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186149106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4aafe0a0e3716048ae0d974a0e83808, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &238465756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6083007937523887935, guid: d23e5726935ab0b4e8099ee0655284c5,
@@ -3253,7 +3273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480909650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.136, y: -0.04, z: 0}
+  m_LocalPosition: {x: 0.145, y: -0.051, z: 0}
   m_LocalScale: {x: 0.131718, y: 0.21709076, z: 0.19513777}
   m_Children: []
   m_Father: {fileID: 878807726}
@@ -3272,9 +3292,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.25007284, y: 0}
+  m_Offset: {x: 0.16309102, y: -0.022618048}
   serializedVersion: 2
-  m_Radius: 0.33120084
+  m_Radius: 0.3010434
 --- !u!4 &486440938 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6083007937523887935, guid: d23e5726935ab0b4e8099ee0655284c5,

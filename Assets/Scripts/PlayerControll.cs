@@ -18,7 +18,8 @@ public class PlayerControll : MonoBehaviour
     bool DJump;
     bool Attack;
     private bool noChao;
-    int At;
+    private float timer = 0.0f;
+    private float waitTime = 1.5f;
     // Start is called before the first frame update
     void Start()
     {        
@@ -70,12 +71,14 @@ public class PlayerControll : MonoBehaviour
             Player.GetComponent<Animator>().SetBool("Idle", false);
 
             if (Input.GetAxis("Horizontal") < 0)
-            {                
+            {
+                ///swhitbox.transform.position.Set(+swhitbox.transform.position.x, swhitbox.transform.position.y, swhitbox.transform.position.z);
                 Player.GetComponent<SpriteRenderer>().flipX = true;
             }
 
             if (Input.GetAxis("Horizontal") > 0)
-            {                
+            {
+                //swhitbox.transform.position.Set(-swhitbox.transform.position.x + swhitbox.transform.position.x * 2, swhitbox.transform.position.y, swhitbox.transform.position.z);
                 Player.GetComponent<SpriteRenderer>().flipX = false;
             }
         }
@@ -109,19 +112,22 @@ public class PlayerControll : MonoBehaviour
             } 
         }
 
-        
+        timer += Time.deltaTime;
         //Hit Enemy
         if (swhitbox.GetComponent<CircleCollider2D>().IsTouching(GameObject.Find("RedEye").GetComponent<CircleCollider2D>()))
-        {            
-            if (At != 1)
-            {
-                Debug.Log("Acertou o inimigo!");               
-            }             
-        }
-        else
         {
-            At = 1;
-        }
+
+            if (timer > waitTime)
+            {
+                //Debug.Log(timer);
+
+                // Remove the recorded 2 seconds.
+                timer = timer - waitTime;
+                //Debug.Log("Tempo esperado :" + timer);
+                //GameObject.Find("RedEye").SetActive(false);
+            }         
+           
+        }        
         //Attack
         if (Input.GetButton("Fire1"))
         {           
