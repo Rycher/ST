@@ -123,10 +123,11 @@ public class PlayerControll : MonoBehaviour
 
                 // Remove the recorded 2 seconds.
                 timer = timer - waitTime;
+                Debug.Log("Acertou o inimigo!");
                 //Debug.Log("Tempo esperado :" + timer);
                 //GameObject.Find("RedEye").SetActive(false);
-            }         
-           
+            }
+
         }        
         //Attack
         if (Input.GetButton("Fire1"))
