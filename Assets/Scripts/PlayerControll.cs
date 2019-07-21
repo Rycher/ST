@@ -19,7 +19,9 @@ public class PlayerControll : MonoBehaviour
     bool Attack;
     private bool noChao;
     private float timer = 0.0f;
-    private float waitTime = 1.5f;
+    private float waitTime = 1.0f;
+    
+
     // Start is called before the first frame update
     void Start()
     {        
@@ -33,17 +35,15 @@ public class PlayerControll : MonoBehaviour
     {        
         Controlers();      
     }
-    
-    
-    
+       
     //Function called from third frame at attack animation
     void HitBox()
     {
         GameObject swhitbox = GameObject.Find("SwHitbox");
-        swhitbox.GetComponent<CircleCollider2D>().enabled = true;        
+        swhitbox.GetComponent<CircleCollider2D>().enabled = true;
     }
-       
-    //Testando Git PUSH
+
+    //Testando Git PUSH  
     void Controlers()
     {
         GameObject swhitbox = GameObject.Find("SwHitbox");
@@ -89,17 +89,7 @@ public class PlayerControll : MonoBehaviour
 
         Player.transform.Translate(_translateX, 0, 0);
 
-        //if it's touching on the ground
-        if (CJ.IsTouching(GameObject.Find("Tilemap").GetComponent<Collider2D>()))
-        {            
-            noChao = true;
-            Player.GetComponent<Animator>().SetBool("NoChao", true);
-        }
-        else
-        {
-            noChao = false;            
-            Player.GetComponent<Animator>().SetBool("NoChao", false);
-        }
+        
                      
         //Jump
         if (Input.GetKeyDown(KeyCode.W) || (Input.GetButtonDown("Jump")))
@@ -113,14 +103,22 @@ public class PlayerControll : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        //Hit Enemy
-        if (swhitbox.GetComponent<CircleCollider2D>().IsTouching(GameObject.Find("RedEye").GetComponent<CircleCollider2D>()))
+
+
+<<<<<<< HEAD
+        //if it's touching on the ground
+        if (CJ.IsTouching(GameObject.Find("Tilemap").GetComponent<Collider2D>()))
         {
+            noChao = true;
+            Player.GetComponent<Animator>().SetBool("NoChao", true);
+        }
+        else
+        {
+            noChao = false;
+            Player.GetComponent<Animator>().SetBool("NoChao", false);
+        }
 
-            if (timer > waitTime)
-            {
-                //Debug.Log(timer);
-
+=======
                 // Remove the recorded 2 seconds.
                 timer = timer - waitTime;
                 Debug.Log("Acertou o inimigo!");
@@ -129,17 +127,44 @@ public class PlayerControll : MonoBehaviour
             }
 
         }        
+>>>>>>> 8cbd729fedff4def6136de27a2e48b732b36cde1
         //Attack
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {           
             Player.GetComponent<Animator>().SetBool("Attack", true);            
         }
         else
         {
             Attack = false;
-            //GameObject swhitbox = GameObject.Find("SwHitbox");
-            swhitbox.GetComponent<CircleCollider2D>().enabled = false;
+            //GameObject swhitbox = GameObject.Find("SwHitbox");     
+            swhitbox.GetComponent<CircleCollider2D>().enabled = false;                       
             Player.GetComponent<Animator>().SetBool("Attack", false);
         }
+        
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            if (collision.gameObject.name.Substring(0,6) == "RedEye")
+            {
+                timer = timer - waitTime;
+                //Debug.Log("Tempo esperado :" + timer);
+                Life.Health -= 10f;
+
+            }
+
+            if (collision.gameObject.name.Substring(0, 2) == "E2")
+            {
+                timer = timer - waitTime;
+                //Debug.Log("Tempo esperado :" + timer);
+                Life.Health -= 30f;
+
+            }
+        }
+        
+    }
+
+
 }

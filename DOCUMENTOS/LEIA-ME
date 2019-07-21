@@ -1,0 +1,9 @@
+Desenvolvimento ST
+
+                                 OBJ 															    Concluido	
+
+1 - Destruir o inimigo pela identificação no onColliderEnter2d e não pelo nome do objeto (X)
+2 - Desenvolver o spawn
+3 - Implementar a IA nos inimigos.
+
+

@@ -21,7 +21,7 @@ public class ControlJump : MonoBehaviour
         if (Player.GetComponent<Rigidbody2D>().IsTouching(Chao))
         {
             IsGrounded = true;
-            Debug.Log("IsGrounded");
+            //Debug.Log("IsGrounded");
         }
         {
             IsGrounded = false;
