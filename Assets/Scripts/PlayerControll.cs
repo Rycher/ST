@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -33,9 +33,9 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {        
-        Controlers();      
+        Controlers();               
     }
-       
+
     //Function called from third frame at attack animation
     void HitBox()
     {
@@ -89,8 +89,18 @@ public class PlayerControll : MonoBehaviour
 
         Player.transform.Translate(_translateX, 0, 0);
 
-        
-                     
+        //if it's touching on the ground
+        if (CJ.IsTouching(GameObject.Find("Tilemap").GetComponent<Collider2D>()))
+        {
+            noChao = true;
+            Player.GetComponent<Animator>().SetBool("NoChao", true);
+        }
+        else
+        {
+            noChao = false;
+            Player.GetComponent<Animator>().SetBool("NoChao", false);
+        }
+
         //Jump
         if (Input.GetKeyDown(KeyCode.W) || (Input.GetButtonDown("Jump")))
         {            
@@ -104,30 +114,6 @@ public class PlayerControll : MonoBehaviour
 
         timer += Time.deltaTime;
 
-
-<<<<<<< HEAD
-        //if it's touching on the ground
-        if (CJ.IsTouching(GameObject.Find("Tilemap").GetComponent<Collider2D>()))
-        {
-            noChao = true;
-            Player.GetComponent<Animator>().SetBool("NoChao", true);
-        }
-        else
-        {
-            noChao = false;
-            Player.GetComponent<Animator>().SetBool("NoChao", false);
-        }
-
-=======
-                // Remove the recorded 2 seconds.
-                timer = timer - waitTime;
-                Debug.Log("Acertou o inimigo!");
-                //Debug.Log("Tempo esperado :" + timer);
-                //GameObject.Find("RedEye").SetActive(false);
-            }
-
-        }        
->>>>>>> 8cbd729fedff4def6136de27a2e48b732b36cde1
         //Attack
         if (Input.GetButtonDown("Fire1"))
         {           
@@ -152,7 +138,6 @@ public class PlayerControll : MonoBehaviour
                 timer = timer - waitTime;
                 //Debug.Log("Tempo esperado :" + timer);
                 Life.Health -= 10f;
-
             }
 
             if (collision.gameObject.name.Substring(0, 2) == "E2")
@@ -160,7 +145,6 @@ public class PlayerControll : MonoBehaviour
                 timer = timer - waitTime;
                 //Debug.Log("Tempo esperado :" + timer);
                 Life.Health -= 30f;
-
             }
         }
         
